@@ -1,2 +1,11 @@
-
+lv2:
+    Decided most features.
+    Perfected smoothing, segementation etc.
+    Decided kind of classifier. (Is it black box approach)
+    
+    
+lv3:
+    Implemented features.
+    Implemented decided classifier.
+    
 
