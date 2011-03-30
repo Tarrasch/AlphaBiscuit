@@ -1,0 +1,13 @@
+After extracting a contour. We expand the contour to a fixed
+area size prefarbly, because we defend ourselves at any-angle photographs.
+
+One will notice that maybe we don't want to work on outer contours,
+rather we will work on sets of pixels rather than the contour.
+This representation is more expensive, BUT will make it easier to capture
+the essence of that the bodies actually are not representable with
+simply a contour. For instance capital 'A' has a hole in the middle.
+
+With the above undecided in mind we list up the features.
+
+Features:
+    * The momentum of the body.
