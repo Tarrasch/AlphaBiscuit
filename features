@@ -8,3 +8,16 @@ the essence of that the bodies actually are not representable with
 simply a contour. For instance capital 'A' has a hole in the middle.
 
 With the above undecided in mind we list up the features.
+
+Features:
+    * The momentum of the body. (Parameters p,q, maybe 3*3 combinations)
+    * Perimetery - 
+        This property could be checked both for the outer perimetry
+        and the total perimetry, those would be equal for characters
+        without wholes in them, like 'L', 'K', 'U', etc.
+    * Thinness of shape - # erosions to get {}
+    * Convexity - maximal (=1) when the object is the same as it's hull
+    * Compactness - Large for compact objects, like discs.
+    
+        
+    
