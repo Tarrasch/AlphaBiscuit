@@ -4,10 +4,13 @@ function [ greyscale_img ] = desaturate( rgb_img )
 
 IRed = rgb_img(:,:,1);
 IGreen = rgb_img(:,:,2);
-% IBlue = Im(:,:,3);
-IYell = (IRed + IGreen)./(2*sum(rgb_img,3));
+IBlue = rgb_img(:,:,3);
 
-greyscale_img = IYell;
+pickRGB = [10 5 0];
+f = sum(pickRGB);
+IMix = (IRed*pickRGB(1) + IGreen*pickRGB(2) + IBlue*pickRGB(3))./(f*sum(rgb_img,3));
+
+greyscale_img = IMix;
 
 end
 
