@@ -5,7 +5,7 @@ function [ output_args ] = img_list( ~ )
     img_dir = 'img';
 
     if exist(img_dir, 'dir') ~= 7
-        error('Folder not found');
+        error(['Imagefolder `' img_dir '` not found']);
     end
 
     files = dir(img_dir);
