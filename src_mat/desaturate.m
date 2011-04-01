@@ -5,7 +5,7 @@ function [ greyscale_img ] = desaturate( rgb_img )
 IRed = rgb_img(:,:,1);
 IGreen = rgb_img(:,:,2);
 % IBlue = Im(:,:,3);
-IYell = (IRed + IGreen)./(2*sum(Im,3));
+IYell = (IRed + IGreen)./(2*sum(rgb_img,3));
 
 greyscale_img = IYell;
 
