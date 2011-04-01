@@ -11,15 +11,16 @@ function [ res ] = img_list( img_dir )
     
     % Remove nonreal files . and ..
     files = files(3:length(files));
+    n = length(files);
     
     % We have images with dimensions 1200*1600*3. 3 is for RGB
-    res = zeros(size(files), 1200, 1600, 3);
+    res = cell(n);
 
-    for i = 1:size(files)
+    for i = 1:n
         path = [img_dir files(i).name]; % Path to current image
         M = double(imread(path)); % We want double-images, not int8
         M = M/255; % Range is [0, 1]
-        res(i,:,:,:) = M; % Assignment must be done like this ...
+        res{i} = M;
     end
 
 end
