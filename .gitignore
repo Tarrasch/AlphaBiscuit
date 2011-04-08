@@ -2,4 +2,8 @@
 *.bak
 *.swp
 *.o
+*.aux
+*.log
+*.out
+*goutput*
 
