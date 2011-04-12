@@ -4,11 +4,15 @@ function [ properties ] = calc_properties( img )
 % values returned are normalized with respect to area, automatically.
 % Some properties of this function are not supported in regionprops.
 
-s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Perimeter', 'Solidity');
+s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Image', 'Perimeter', 'Solidity');
 
 
 s.Perimeter= s.Perimeter/sqrt(s.Area);
 s.MajorAxisLength= s.MajorAxisLength/sqrt(s.Area);
+
+s.mom1 = immomentum(s, 1);
+
+
 
 properties = s;
 
