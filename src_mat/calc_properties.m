@@ -10,7 +10,9 @@ s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Image', '
 s.Perimeter= s.Perimeter/sqrt(s.Area);
 s.MajorAxisLength= s.MajorAxisLength/sqrt(s.Area);
 
-s.mom1 = immomentum(s, 1);
+s.mom1 = stat_momentum(s, 1);
+s.mom2 = stat_momentum(s, 2);
+s.mom3 = stat_momentum(s, 3);
 
 
 

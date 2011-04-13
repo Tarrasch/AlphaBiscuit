@@ -5,3 +5,4 @@
 Imgs = img_list('img/a/');
 Im = Imgs{1};
 Im_bin = imtobinary(Im);
+
