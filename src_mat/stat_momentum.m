@@ -1,6 +1,7 @@
-function [ r ] = immomentum( STATS, exponent)
+function [ r ] = stat_momentum( STATS, exponent)
 %UNTITLED Calculate momentum of the binary image.
-%   Detailed explanation goes here
+%   Provide stats with .Image and .Centroid
+%   
 
 img = STATS.Image;
 [n, m] = size(img);
