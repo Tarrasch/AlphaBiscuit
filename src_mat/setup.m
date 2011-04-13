@@ -4,5 +4,8 @@
 
 Imgs = img_list('img/a/');
 Im = Imgs{1};
-Im_bin = imtobinary(Im);
 
+% Resize image first
+Im = imresize(Im, 0.5);
+
+Im_bin = imtobinary(Im);
