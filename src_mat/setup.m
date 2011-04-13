@@ -4,21 +4,24 @@
 
 
 all_files = dir('img/');
-biscs = cell(255); % 'a' ..'åäö' Should fit
+biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
 for f = all_files'
     if numel(f.name) == 1 && f.name ~= '.'
         c = f.name;
         foldr = ['img/' c '/'];
-        Imgs = img_list(foldr);
+        f = @(img) calc_properties(imtobinary(imresize(img, 0.25)));
+        Imgs = img_list(foldr, f);
         biscs{c} = Imgs;
+        if(c >= 'e')
+            break;
+        end
     end
 end
 
-Imgs = img_list('img/a/');
-Im = Imgs{1};
+Im = biscs{'a'}{1};
 
 % Resize image first
-Im = imresize(Im, 0.5);
+% Im = imresize(Im, 0.5);
 
-Im_bin = imtobinary(Im);
+% Im_bin = imtobinary(Im);
