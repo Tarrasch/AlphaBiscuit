@@ -14,6 +14,7 @@ for i = 1:n
     for j = 1:m
         dy = my-j;
         d = sqrt(dx^2+dy^2);
+        d = d / sqrt(STATS.Area);
         r = r + img(i, j) * d^exponent;
     end
 end
