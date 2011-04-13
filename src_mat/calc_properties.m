@@ -3,16 +3,17 @@ function [ properties ] = calc_properties( img )
 %   This function highly uses regionsprops, however all
 % values returned are normalized with respect to area, automatically.
 % Some properties of this function are not supported in regionprops.
+% To avoid confusion, all area-netrualized properties start with AN
 
 s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Image', 'Perimeter', 'Solidity');
 
 
-s.Perimeter= s.Perimeter/sqrt(s.Area);
-s.MajorAxisLength= s.MajorAxisLength/sqrt(s.Area);
+s.ANPerimeter       = s.Perimeter/sqrt(s.Area);
+s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
 
-s.mom1 = stat_momentum(s, 1);
-s.mom2 = stat_momentum(s, 2);
-s.mom3 = stat_momentum(s, 3);
+s.ANmom1 = stat_momentum(s, 1);
+s.ANmom2 = stat_momentum(s, 2);
+s.ANmom3 = stat_momentum(s, 3);
 
 
 
