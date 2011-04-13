@@ -4,12 +4,14 @@
 
 
 all_files = dir('img/');
-folders = zeros(0);
+biscs = cell(255); % 'a' ..'åäö' Should fit
 
 for f = all_files'
-    disp(f.name)
-    if numel(f) == 1
-        folders(end) = f.name
+    if numel(f.name) == 1 && f.name ~= '.'
+        c = f.name;
+        foldr = ['img/' c '/'];
+        Imgs = img_list(foldr);
+        biscs{c} = Imgs;
     end
 end
 
