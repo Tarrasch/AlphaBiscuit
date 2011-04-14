@@ -6,18 +6,20 @@
 all_files = dir('img/');
 biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
-for f = all_files'
-    if numel(f.name) == 1 && f.name ~= '.'
-        c = f.name;
+for file = all_files'
+    c = file.name;
+    if numel(c) == 1 && c ~= '.'
         foldr = ['img/' c '/'];
         f = @(img) calc_properties(imtobinary(imresize(img, 0.25)));
         Imgs = img_list(foldr, f);
         biscs{c} = Imgs;
-        if(c >= 'e')
+        if(c >= 'a')
             break;
         end
     end
 end
+
+clear Imgs c f foldr file all_files
 
 Im = biscs{'a'}{1};
 
