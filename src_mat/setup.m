@@ -13,7 +13,7 @@ for file = all_files'
         f = @(img) calc_properties(imtobinary(imresize(img, 0.25)));
         Imgs = img_list(foldr, f);
         biscs{c} = Imgs;
-        if(c >= 'a')
+        if(c >= 'c')
             break;
         end
     end
@@ -21,9 +21,3 @@ end
 
 clear Imgs c f foldr file all_files
 
-Im = biscs{'a'}{1};
-
-% Resize image first
-% Im = imresize(Im, 0.5);
-
-% Im_bin = imtobinary(Im);
