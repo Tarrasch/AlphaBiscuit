@@ -6,12 +6,16 @@
 all_files = dir('img/');
 biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
+
+f = @(img) imresize(img, 0.25);
+g = @(img) imtobinary(f(img));
+h = @(img) calc_properties(g(img));
+
 for file = all_files'
     c = file.name;
     if numel(c) == 1 && c ~= '.'
         foldr = ['img/' c '/'];
-        f = @(img) calc_properties(imtobinary(imresize(img, 0.25)));
-        Imgs = img_list(foldr, f);
+        Imgs = img_list(foldr, h);
         biscs{c} = Imgs;
         if(c >= 'c')
             break;
@@ -19,7 +23,8 @@ for file = all_files'
     end
 end
 
-clear Imgs c f foldr file all_files
+clear Imgs c foldr file all_files
+clear f g h
 
 % Now add quickshow functions
 s  = @(c) imshow(biscs{c}{1}.Image);
