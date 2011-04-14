@@ -21,3 +21,13 @@ end
 
 clear Imgs c f foldr file all_files
 
+% Now add quickshow functions
+s  = @(c) imshow(biscs{c}{1}.Image);
+sn = @(c, i) imshow(biscs{c}{i}.Image);
+
+% for i = 1:numel(biscs{c})
+%     figure(i)
+%     imshow(biscs{c}{i}.Image)
+% end
+% 
+% sa = @(c) for i = 1:numel(biscs{c}), figure(i), imshow(biscs{c}{i}.Image), end;
