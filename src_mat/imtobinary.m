@@ -5,7 +5,10 @@ function [ img_out ] = imtobinary( img_in )
 img = img_in;
 
 % First extract colors channels
-f = @(img) double(img)/255;
+f = @(img) img;
+if max(img) > 1
+    f = @(img) double(img)/255;
+end
 r = f(img(:,:,1));
 g = f(img(:,:,2));
 b = f(img(:,:,3));
@@ -25,6 +28,7 @@ figure(7), imshow(b);
 figure(1);
 img_out = b < 0.1 & g > 0.2 & g < 0.4 & r > g & r < 3*g;
 % img_out = (r > g) & (r < 3*g) & (b < 1.4);
+imshow(img_out);
 
 end
 

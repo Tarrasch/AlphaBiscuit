@@ -17,7 +17,7 @@ for file = all_files'
         foldr = ['img/' c '/'];
         Imgs = img_list(foldr, h);
         biscs{c} = Imgs;
-        if(c >= 'c')
+        if(c >= 'a')
             break;
         end
     end

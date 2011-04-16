@@ -23,6 +23,7 @@ function [ res ] = img_list( img_dir, varargin )
 
     for i = 1:n
         path = [img_dir files(i).name]; % Path to current image
+        disp(['Loaded ' path]);
         M = double(imread(path)); % We want double-images, not int8
         M = M/255; % Range is [0, 1]
         M = f(M);

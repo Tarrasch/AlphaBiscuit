@@ -7,12 +7,20 @@ function [ properties ] = calc_properties( img )
 
 s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Image', 'Perimeter', 'Solidity');
 
+props = disp(fieldnames(s));
+biggestArea = max(s.Area);
+struct
+for p = props 
+    
+end
 
 s.ANPerimeter       = s.Perimeter/sqrt(s.Area);
 s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
 
+
+
 % Commented out temporairly for efficiency
-% s.ANmom1 = stat_momentum(s, 1);
+% s.ANmom1 = stat_momentum(s,h 1);
 % s.ANmom2 = stat_momentum(s, 2);
 % s.ANmom3 = stat_momentum(s, 3);
 
