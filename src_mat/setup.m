@@ -24,14 +24,14 @@ for file = all_files'
 end
 
 clear Imgs c foldr file all_files
-clear f g h
+% clear f g h
 
 % Now add quickshow functions
-s  = @(c) imshow(biscs{c}{1}.Image);
 sn = @(c, i) imshow(biscs{c}{i}.Image);
+s  = @(c) sn(c,1);
 
-w  = @(c) biscs{c}{1};
 wn = @(c, i) biscs{c}{i};
+w  = @(c) wn(c,1);
 
 % for i = 1:numel(biscs{c})
 %     figure(i)
