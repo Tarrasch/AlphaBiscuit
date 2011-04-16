@@ -19,16 +19,16 @@ w = fspecial('average', 20);
 
 f = @(img) imfilter(img, w, 'replicate');
 r = f(r);
-figure(5), imshow(r);
+% figure(5), imshow(r);
 g = f(g);
-figure(6), imshow(g);
+% figure(6), imshow(g);
 b = f(b);
-figure(7), imshow(b);
+% figure(7), imshow(b);
 
-figure(1);
+% figure(1);
 img_out = b < 0.1 & g > 0.2 & g < 0.4 & r > g & r < 3*g;
 % img_out = (r > g) & (r < 3*g) & (b < 1.4);
-imshow(img_out);
+
 
 end
 

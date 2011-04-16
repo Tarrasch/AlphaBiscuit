@@ -17,7 +17,7 @@ for file = all_files'
         foldr = ['img/' c '/'];
         Imgs = img_list(foldr, h);
         biscs{c} = Imgs;
-        if(c >= 'a')
+        if(c >= 'c')
             break;
         end
     end
@@ -29,6 +29,9 @@ clear f g h
 % Now add quickshow functions
 s  = @(c) imshow(biscs{c}{1}.Image);
 sn = @(c, i) imshow(biscs{c}{i}.Image);
+
+w  = @(c) biscs{c}{1};
+wn = @(c, i) biscs{c}{i};
 
 % for i = 1:numel(biscs{c})
 %     figure(i)
