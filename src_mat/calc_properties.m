@@ -20,10 +20,9 @@ s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
 
 
 
-% Commented out temporairly for efficiency
-% s.ANmom1 = stat_momentum(s,h 1);
-% s.ANmom2 = stat_momentum(s, 2);
-% s.ANmom3 = stat_momentum(s, 3);
+s.ANmom1 = stat_momentum(s, 1);
+s.ANmom2 = stat_momentum(s, 2);
+s.ANmom3 = stat_momentum(s, 3);
 
 
 

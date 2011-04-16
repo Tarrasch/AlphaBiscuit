@@ -30,7 +30,7 @@ clear Imgs c foldr file all_files
 sn = @(c, i) imshow(biscs{c}{i}.Image);
 s  = @(c) sn(c,1);
 
-wn = @(c, i) biscs{c}{i};
+wn = @(c, i) stat_filterprops(biscs{c}{i});
 w  = @(c) wn(c,1);
 
 % for i = 1:numel(biscs{c})
