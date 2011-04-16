@@ -7,12 +7,13 @@ function [ properties ] = calc_properties( img )
 
 s = regionprops(img, 'Area', 'Centroid', 'Extent', 'MajorAxisLength', 'Image', 'Perimeter', 'Solidity');
 
-props = disp(fieldnames(s));
-biggestArea = max(s.Area);
-struct
-for p = props 
-    
-end
+% props = disp(fieldnames(s));
+% biggestArea = max(s.Area);
+% struct
+% for p = props 
+%     
+% end
+s = s(1);
 
 s.ANPerimeter       = s.Perimeter/sqrt(s.Area);
 s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
