@@ -31,11 +31,13 @@ dx = ones(n, 1)*(1:m);
 dy = my - dy;
 dx = mx - dx;
 ds = sqrt(dx.^2+dy.^2);
-ds = ds.*img;
 ds = ds/sqrt(STATS.Area);
+assert(min(min(ds)) >= 0);
 ds = ds.^exponent;
+ds = ds.*img;
 s = sum(sum(ds));
 r = s/STATS.Area;
+
 
 end
 
