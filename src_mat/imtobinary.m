@@ -15,7 +15,7 @@ b = f(img(:,:,3));
 
 % Apply Gaussian filter
 % w = fspecial('gaussian', 15, 2); % UNCOMPILED CODE
-w = fspecial('average', 20);
+w = fspecial('average', 5);
 
 f = @(img) imfilter(img, w, 'replicate');
 r = f(r);
@@ -26,7 +26,7 @@ b = f(b);
 % figure(7), imshow(b);
 
 % figure(1);
-img_out = b < 0.1 & g > 0.0 & g < 0.5 & r > g & r < 3*g;
+img_out = b < 0.1 & g > 0.0 & g < 0.5 & r > 1.5*g & r < 3*g;
 % img_out = (r > g) & (r < 3*g) & (b < 1.4);
 
 
