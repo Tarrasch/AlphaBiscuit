@@ -19,7 +19,7 @@ function [ res ] = img_list( img_dir, varargin )
     n = length(files);
     
     % We have images with dimensions 1200*1600*3. 3 is for RGB
-    res = cell(n);
+    res = cell(n,1);
 
     for i = 1:n
         path = [img_dir files(i).name]; % Path to current image
