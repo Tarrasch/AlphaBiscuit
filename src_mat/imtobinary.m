@@ -22,10 +22,9 @@ h = f(h);
 s = f(s);
 v = f(v);
 
-imhist(h);
 h = h.*360;
 
-img_out = s > 0.85 & h > 20 & h < 40 & v > 0.3 & v < 0.65;
+img_out = s > 0.85 & h > 20 & h < 40 & v > 0.20 & v < 0.65;
 
 
 end
