@@ -13,13 +13,10 @@ s = regionprops(img, 'Area' ...
                    , 'Perimeter' ...
                    , 'Solidity');
 
-% props = disp(fieldnames(s));
-% biggestArea = max(s.Area);
-% struct
-% for p = props 
-%     
-% end
-s = s(1);
+
+% This will do while we do only character identification
+s = extract_biggest_piece(s); 
+
 
 s.ANPerimeter       = s.Perimeter/sqrt(s.Area);
 s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
