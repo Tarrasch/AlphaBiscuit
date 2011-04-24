@@ -6,7 +6,7 @@ if numel(ss) == 0
     error('No part exists at all. Perhaps to hard filtering?');
 end
 
-i = 0;
+i = 1;
 n = numel(ss);
 for j = 1:n
     if ss(j).Area > ss(i).Area
@@ -14,7 +14,7 @@ for j = 1:n
     end
 end
 
-s = ss(j);
+s = ss(i);
 
 end
 
