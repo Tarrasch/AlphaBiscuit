@@ -1,5 +1,5 @@
 function [ character ] = classify( biscs, bisc)
-%CLASSIFY Summary of this function goes here
+%CLASSIFY With a set of known biscuit-chars determine arbitrary biscuit
 %   Detailed explanation goes here
 
 curr_max_dist = inf;
