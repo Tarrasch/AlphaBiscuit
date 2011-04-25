@@ -9,8 +9,8 @@ for c = 'a':'ö'
     f = @(i) biscs{c}{i};
     for i = 1:n
         d = bisc_dist(f(i), bisc);
-        disp([c '(' num2str(i) '): ' num2str(d)]); 
-        if d < curr_max_dist && d > 0.00000001
+%         disp([c '(' num2str(i) '): ' num2str(d)]); 
+        if d < curr_max_dist 
             curr_max_dist = d;
             character = c; 
         end
