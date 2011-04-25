@@ -4,7 +4,7 @@ function [ character ] = classify( biscs, bisc)
 
 curr_max_dist = inf;
 
-for c = 'a':'c'
+for c = 'a':'ö'
     n = numel(biscs{c});
     f = @(i) biscs{c}{i};
     for i = 1:n
