@@ -5,11 +5,12 @@ function [ character ] = classify( biscs, bisc)
 curr_max_dist = inf;
 
 for c = 'a':'c'
-    n = numel(biscs{'a'});
-    f = @(i) biscs{'a'}{i};
+    n = numel(biscs{c});
+    f = @(i) biscs{c}{i};
     for i = 1:n
         d = bisc_dist(f(i), bisc);
-        if d < curr_max_dist && d > 0.001
+        disp([c '(' num2str(i) '): ' num2str(d)]); 
+        if d < curr_max_dist && d > 0.00000001
             curr_max_dist = d;
             character = c; 
         end
