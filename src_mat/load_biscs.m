@@ -11,6 +11,9 @@ h = @(img) calc_properties(g(img));
 
 for c = range
     foldr = ['img/' c '/'];
+    if ~exist(foldr, 'dir')
+        continue;
+    end
     Imgs = img_list(foldr, h);
     biscs{c} = Imgs;
     if(c >= 'g')
