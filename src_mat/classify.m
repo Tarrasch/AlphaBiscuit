@@ -1,6 +1,6 @@
 function [ character ] = classify( biscs, bisc)
 %CLASSIFY With a set of known biscuit-chars determine arbitrary biscuit
-%   Detailed explanation goes here
+%   Using neigherest neighbour classification
 
 curr_max_dist = inf;
 
