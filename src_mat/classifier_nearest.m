@@ -1,4 +1,4 @@
-function [ character ] = classify( biscs, bisc)
+function [ character ] = classifier_nearest( biscs, bisc)
 %CLASSIFY With a set of known biscuit-chars determine arbitrary biscuit
 %   Using neigherest neighbour classification
 
