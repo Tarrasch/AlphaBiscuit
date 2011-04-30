@@ -16,9 +16,6 @@ for c = range
     end
     Imgs = img_list(foldr, h);
     biscs{c} = Imgs;
-    if(c >= 'g')
-        break;
-    end
 end
 
 
