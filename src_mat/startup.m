@@ -4,24 +4,8 @@
 
 
 all_files = dir('img/');
-biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
-
-f = @(img) imresize(img, 0.25);
-g = @(img) imtobinary(f(img));
-h = @(img) calc_properties(g(img));
-
-for file = all_files'
-    c = file.name;
-    if numel(c) == 1 && c ~= '.'
-        foldr = ['img/' c '/'];
-        Imgs = img_list(foldr, h);
-        biscs{c} = Imgs;
-        if(c >= 'g')
-            break;
-        end
-    end
-end
+biscs = load_biscs('a':'g');
 
 clear Imgs c foldr file all_files
 % clear f g h
