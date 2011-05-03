@@ -5,22 +5,8 @@ function [ r ] = stat_momentum( STATS, exponent)
 
 img = STATS.Image;
 [n, m] = size(img);
-mx = STATS.Centroid(1);
+mx = STATS.Centroid(1); 
 my = STATS.Centroid(2);
-
-r = 0;
-for i = 1:n
-    break;
-    dx = mx-i;
-    for j = 1:m
-        dy = my-j;
-        d = sqrt(dx^2+dy^2);
-        d = d / sqrt(STATS.Area);
-        r = r + img(i, j) * d^exponent;
-    end
-end
-r = r / STATS.Area;
-
 
 % A vectorized implementation
 
