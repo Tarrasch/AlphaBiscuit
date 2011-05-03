@@ -5,7 +5,7 @@
 
 all_files = dir('img/');
 
-biscs = load_biscs('a':'g');
+biscs = load_biscs('a':'d');
 
 clear Imgs c foldr file all_files
 % clear f g h
