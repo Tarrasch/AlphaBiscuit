@@ -1,4 +1,4 @@
-function [ properties ] = calc_properties( img )
+function [ s ] = calc_properties( img )
 %CALC_PROPERTIES binary image with one cracker
 %   This function highly uses regionsprops, however all
 % values returned are normalized with respect to area, automatically.
@@ -17,19 +17,7 @@ s = regionprops(img, 'Area' ...
 % This will do while we do only character identification
 s = extract_biggest_piece(s); 
 
-
-s.ANPerimeter       = s.Perimeter/sqrt(s.Area);
-s.ANMajorAxisLength = s.MajorAxisLength/sqrt(s.Area);
-
-
-
-s.ANmom1 = stat_momentum(s, 1);
-s.ANmom2 = stat_momentum(s, 2);
-s.ANmom3 = stat_momentum(s, 3);
-
-
-
-properties = s;
+s = add_areaneutral_fields(s);
 
 end
 
