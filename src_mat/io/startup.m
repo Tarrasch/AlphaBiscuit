@@ -20,6 +20,7 @@ sa = @(c)arrayfun(@(i){figure(i),imshow(biscs{c}{i}.Image)},...
 wn = @(c, i) stat_filterprops(biscs{c}{i});
 w  = @(c) wn(c,1);
 
+classy = @(b) classifier_nearest(biscs, b);
 % for i = 1:numel(biscs{c})
 %     figure(i)
 %     imshow(biscs{c}{i}.Image)
