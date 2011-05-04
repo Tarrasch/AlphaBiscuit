@@ -14,10 +14,13 @@ s = regionprops(img, 'Area' ...
                    , 'Solidity');
 
 
-% This will do while we do only character identification
-s = extract_biggest_piece(s); 
+               
 
-s = add_areaneutral_fields(s);
+% Extract all biscuits, quite likely to go wrong ...
+s = extract_biscuits(s); 
+
+% Map this function over the struct             
+s = arrayfun(@add_areaneutral_fields, s);
 
 end
 
