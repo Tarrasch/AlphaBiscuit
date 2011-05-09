@@ -12,13 +12,13 @@
 \maketitle
 
 \begin{abstract}
-    Letter biscuits have been around for many decades, but digital image
-analysis are only beginning to find applications in the real world.
-Typing with letter biscuits is joyful for children, using image analysis
-one could create electronical activities that involves these biscuits,
+    Letter biscuits have been around for many decades, but digital im-
+age analysis are only beginning to ﬁnd applications in the real world.
+Typing with letter biscuits is joyful for children, using image analy-
+sis one could create electronical activities that involves these biscuits,
 such activities could improve literacy among children. This paper take
-a statistical approach to automatically classify alphabet biscuits,
-applying known techniques from image analysis. Using the classifier, we
+a statistical approach to automatically classify alphabet biscuits, ap-
+plying known techniques from image analysis. Using the classiﬁer, we
 then create a word reader that extracts words from an image of letter
 biscuits.
 
