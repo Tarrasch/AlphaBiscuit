@@ -12,6 +12,18 @@
 \maketitle
 
 \begin{abstract}
+<<<<<<< HEAD
+Letter biscuits have been around for many decades, but digital
+image analysis are only beginning to find applications in the real world.
+Typing with letter biscuits is joyful for children, using image analysis
+one could create electronical activities that involves these biscuits,
+such activities could improve literacy among children.
+This paper take a statistical approach to automatically classify
+alphabet biscuits, applying known techniques from image analysis.
+Using the classifier, we then create a word reader that
+extracts words from an image of letter biscuits.
+
+=======
     Letter biscuits have been around for many decades, but digital image
 analysis are only beginning to find applications in the real world.
 Typing with letter biscuits is joyful for children, using image analysis
@@ -21,16 +33,20 @@ a statistical approach to automatically classify alphabet biscuits,
 applying known techniques from image analysis. Using the classifier, we
 then create a word reader that extracts words from an image of letter
 biscuits.
+>>>>>>> 1eb2af4585004a17da7d22a526092698a5c2c08b
 
 \end{abstract}
 
 \section{Introduction}
+<<<<<<< HEAD
+=======
 The recognition of letter biscuits is similiar to many other image recognition problems. Image recognition being well developed already, only little new research have been made for this project. Rather, a way to combine existing techniques will be presented.
 
 In order to optimize our recognition method, some remarks should be made on the type of data we are working with.
 To our favour, the biscuits are manufactured, and therfor all biscuits of the same letter looks the same, both in shape and color. This obviously simplifies recognition.
 On the other hand the solid body form of biscuits can surpress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
 
+>>>>>>> 1eb2af4585004a17da7d22a526092698a5c2c08b
 \section{Method}
 \section{Results}
 \section{Discussion}
