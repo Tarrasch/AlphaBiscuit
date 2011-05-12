@@ -1,4 +1,4 @@
-function [ biscs_out ] = normalize_features( biscs )
+function [ biscs ] = normalize_features( biscs )
 %NORMALIZE_FEATURES Normalizes the feature fields
 %   Detailed explanation goes here
 
@@ -17,19 +17,14 @@ for f = ANFields()
     m = mean(col);
     stddev = std(col);
     
-    in_f  = @(elem) elem.(f) = (elem.(f)-m)/stddev;
-    arr_f = @(arr) arrayfun(in_f, arr);
-    biscs = arrayfun(arr_f, biscs);
-%     for bl = biscs
-%         for b = bl
-%             b.(f)
-%             b.(f) = (b.(f)-m)/stddev;
-%             b.(f)
-%         end
-%     end
+     for i = 1:numel(biscs)
+         for j = 1:numel(biscs{i})
+            for k = 1:numel(biscs{i}{j})
+                biscs{i}{j}(k).(f) = (biscs{i}{j}(k).(f)-m)/stddev;
+            end
+         end
+     end
 end
-
-biscs_out = biscs;
 
 end
 
