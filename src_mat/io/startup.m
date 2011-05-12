@@ -20,7 +20,14 @@ sa = @(c)arrayfun(@(i){figure(i),imshow(biscs{c}{i}.Image)},...
 wn = @(c, i) stat_filterprops(biscs{c}{i});
 w  = @(c) wn(c,1);
 
-classy = @(b) classifier_nearest(biscs, b);
+[nbiscs, transform] = normalize_features(biscs);
+classy  = @(b) classifier_nearest(biscs, b);
+nclassy = @(b) classifier_nearest(nbiscs, b);
+nclassy2 = @(b) classifier_nearest(nbiscs, transform(b));
+
+if ~all(arrayfun(@(s) numel(s{1}), flatten_cells(biscs)) == 1)
+    disp 'Biscuits are split, they form islands!'
+end
 % for i = 1:numel(biscs{c})
 %     figure(i)
 %     imshow(biscs{c}{i}.Image)

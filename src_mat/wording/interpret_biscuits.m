@@ -20,7 +20,6 @@ for loop_num = 1:n
         dy = s(j).Centroid(2) - y0;       
         fdy = fix(dy/p);
         dist = fdy*1e5 + dx;
-        disp(dist)
         if dist > 0 && best_dist > dist
             best_ix = j;
             best_dist = dist;
@@ -28,7 +27,6 @@ for loop_num = 1:n
             space = dx/p;
         end
     end
-    disp(best_ix)
     if newline >= 1 && loop_num > 1
         text = [text '\n'];
     elseif space >= 1 && loop_num > 1

@@ -5,7 +5,7 @@ function [ biscs ] = load_biscs( range )
 
 biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
-f = @(img) imresize(img, 0.125);
+f = @(img) imresize(img, 0.5);
 g = @(img) imtobinary(f(img));
 h = @(img) calc_properties(g(img));
 
