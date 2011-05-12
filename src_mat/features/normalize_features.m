@@ -26,7 +26,7 @@ for f = ANFields()
         end
     end
     
-    transform = @(s) struct_update(transform(s), f, (s.(f)-m)/stddev);
+    transform = @(s) struct_update(transform(s), f, @(v)(v-m)/stddev);
 end
 
 end
