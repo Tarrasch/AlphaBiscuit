@@ -1,5 +1,5 @@
 function [ dist ] = bisc_dist( b1, b2 )
-%BISC_DIST Summary of this function goes here
+%BISC_DIST Measure biscuit distance
 %   Detailed explanation goes here
 
 b1 = stat_filterprops(b1);
@@ -22,11 +22,9 @@ for i = 1:n
     p_str = props{i};
     a = b1.(p_str);
     b = b2.(p_str);
-    sum = a + b; % kind of assuming a,b > 0
-    diff_abs = abs(a-b);
-    delta = diff_abs/sum;
-    dist = dist + delta/n;
+    dist = dist + (a-b)*(a-b);
 end
+dist = sqrt(dist); % not really neccesary but ok
 
 end
 
