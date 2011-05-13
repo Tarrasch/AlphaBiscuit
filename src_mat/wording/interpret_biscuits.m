@@ -6,7 +6,6 @@ function [ text ] = interpret_biscuits( s, classifier )
 n = numel(s);
 text = [];
 p = max([s.MajorAxisLength]/2); % give or take
-disp(p)
 
 y0 = 0; x0 = 0; 
 
