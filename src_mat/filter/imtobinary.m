@@ -15,7 +15,7 @@ v = f(img(:,:,3));
 
 % Apply Gaussian filter
 % w = fspecial('gaussian', 15, 2); % UNCOMPILED CODE
-w = fspecial('average', 5);
+w = fspecial('average', 15);
 
 f = @(img) imfilter(img, w, 'replicate');
 h = f(h);
@@ -25,7 +25,7 @@ v = f(v);
 h = h.*360;
 
 img_out = s > 0.5 ...
-        & h > 20 & h < 55 ...
+        & h > 15 & h < 55 ...
         & v > 0.20 & v < 0.65;
 
 
