@@ -14,8 +14,7 @@ s = f(img(:,:,2));
 v = f(img(:,:,3));
 
 % Apply Gaussian filter
-% w = fspecial('gaussian', 15, 2); % UNCOMPILED CODE
-w = fspecial('average', 15);
+w = fspecial('gaussian', 5);
 
 f = @(img) imfilter(img, w, 'replicate');
 h = f(h);
