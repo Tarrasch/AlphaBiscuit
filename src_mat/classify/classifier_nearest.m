@@ -1,4 +1,4 @@
-function [ character ] = classifier_nearest( biscs, bisc)
+function [ character, ix ] = classifier_nearest( biscs, bisc)
 %CLASSIFY With a set of known biscuit-chars determine arbitrary biscuit
 %   Using neigherest neighbour classification
 
@@ -13,6 +13,7 @@ for c = 'a':'ö'
         if d < curr_max_dist 
             curr_max_dist = d;
             character = c; 
+            ix = i;
         end
     end
 end
