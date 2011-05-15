@@ -3,6 +3,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{color}
 
 \title{AlphaBiscuit - Image Recognition of Letter Biscuits}
 \author{Arash Rouhani}
@@ -33,17 +37,38 @@ In order to optimize our recognition method, some remarks should be made on the 
 To our favour, the biscuits are manufactured, and therfor all biscuits of the same letter looks the same, both in shape and color. This obviously simplifies recognition.
 On the other hand the solid body form of biscuits can surpress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
 
-The whole identification process is a \emph{composition} of image processing processes, 
+The whole identification process is a composition of image processing processes, 
 initially we segment a picture to a black and white image containing only the biscuits, 
 we then collect features from the segmented image, 
-... < classifisera >.
+then using a classifier, we classify the unkown biscuit by comparing its featrures to a set of known biscuits.
 In case of there being several biscuits in the image, a wordizer will organize the letters top to bottom, left to right and read out the word.
 
-The segmentation process is well studied for \emph{general} objects, but the fact that the biscuits are of the same colors must be used. For that <we use our own segmentation ????>.
-A well developed general segmentation method could also be used for other segmentation purposes where the data is having similiar properties
+The segmentation process is well studied for \emph{general} objects, but the fact that the biscuits are of the same colors must be used.
+One challenge is to develop our own segmentation method.
+The method created for biscuit segmentation could also be used for other segmentation purposes where the data is having similiar properties.
 
-\section{Method}
+%\section{Method}
+\section{Data collection}
+A low quality camera (mobile camera) have been used to photograph all the images.
+Consequently of the low quality, the segmentation algorithm must be developed to be very robust, this is achievable as the biscuits are all of the same colors.
+The biscuits are laid on a blank white paper, so the whole background is white when photographing, this avoids to catch anything with simliar colors as the biscuits on the image, as that would distract the segmenter.
+All the biscuits used are from the commercial brand named BRAGO BOKSTAVSKEX.
+Figure 1 contains 3 photographed images used throughout this paper.
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=40mm]{orig_a.JPG}
+\includegraphics[width=40mm]{orig_i.JPG}
+\includegraphics[width=40mm]{orig_word.JPG}
+
+\caption{Three sample images}
+\end{center}
+\end{figure}
+
+\section{Segmentation}
+
+\section{Training on known characters}
+\section{Classifying unkown biscuits}
 \section{Results}
 \section{Discussion}
 \section{References}
