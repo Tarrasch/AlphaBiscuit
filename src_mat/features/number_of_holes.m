@@ -3,7 +3,6 @@ function [ s ] = number_of_holes( s, threshold )
 
 hole_image = s.FilledImage - s.Image;
 hole_image = bwlabeln(hole_image);
-imshow(hole_image);
 props = regionprops(hole_image, 'Area');
 
 count = 0;

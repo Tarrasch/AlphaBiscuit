@@ -14,7 +14,7 @@ s = f(img(:,:,2));
 v = f(img(:,:,3));
 
 % Apply Gaussian filter
-w = fspecial('gaussian', 5);
+w = fspecial('gaussian', 40, 4);
 
 f = @(img) imfilter(img, w, 'replicate');
 h = f(h);
