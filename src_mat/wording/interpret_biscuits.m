@@ -23,7 +23,7 @@ for loop_num = 1:n
             best_ix = j;
             best_dist = dist;
             newline = fdy;
-            space = dx/p;
+            space = dx/p/3;
         end
     end
     if newline >= 1 && loop_num > 1
