@@ -78,11 +78,7 @@ However, the feature MajorAxisLength is incompariable to features of a different
 In the configuration in table \ref{tab:features}, it's clear that the Solidity reveals that the biscuits
 are different, the MajorAxisLength are however not to different.
 However, when naively comparing by subtraction, MajorAxisLength has a bigger difference.
-To battle this behavior we use the \emph{linear scaling with unit variance} normalization, see equation \ref{eqn:univariance}.
-\begin{equation}
-x_{new} = \frac{x-\mu}{\sigma}
-\label{eqn:univariance}
-\end{equation}
+To battle this behavior we use the \emph{linear scaling with unit variance} normalization, see equation \ref{eqn:univariance} (Aksoy and Haralick, 2000).
 
 \begin{table}[h!b!p!]
 \caption{Two features of two biscuits}
@@ -96,6 +92,22 @@ x_{new} = \frac{x-\mu}{\sigma}
 \label{tab:features}
 \end{table}
 
+\begin{equation}
+x_{new} = \frac{x-\mu}{\sigma}
+\label{eqn:univariance}
+\end{equation}
+
+After this transformation, all features have a mean of $0$ and variance of $1$.
+Now it's more senseful to compare two different features, or to take the euclidean distance between two biscuits (set of features).
+\subsection{Feature selection}
+With feature normalization taken in place, there is yet no weighting of the features,
+perhaps a large difference in MajorAxisLength definetly tells two biscuits apart,
+meanwhile a large difference in Solidity sould be considered less significant.
+
+We do partially adress this problem by using \emph{binary} weights on the features, 
+that is equivelent to simply not using some features.
+This is helpful when a feature is having a negative impact on the overall classification.
+We use the \emph{greedy backward elimination} method.
 \section{Training on known characters}
 \section{Classifying unkown biscuits}
 \section{Results}
