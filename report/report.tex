@@ -53,19 +53,48 @@ A low quality camera (mobile camera) have been used to photograph all the images
 Consequently of the low quality, the segmentation algorithm must be developed to be very robust, this is achievable as the biscuits are all of the same colors.
 The biscuits are laid on a blank white paper, so the whole background is white when photographing, this avoids to catch anything with simliar colors as the biscuits on the image, as that would distract the segmenter.
 All the biscuits used are from the commercial brand named BRAGO BOKSTAVSKEX.
-Figure 1 contains 3 photographed images used throughout this paper.
+Figure \ref{fig:unprocessed} contains there photographed images used throughout this paper.
 
-\begin{figure}[h]
+\begin{figure}[]
 \begin{center}
 \includegraphics[width=40mm]{orig_a.JPG}
 \includegraphics[width=40mm]{orig_i.JPG}
 \includegraphics[width=40mm]{orig_word.JPG}
-
-\caption{Three sample images}
+\caption{Three unprocessed images}
 \end{center}
+\label{fig:unprocessed}
 \end{figure}
 
 \section{Segmentation}
+The segmentation is to be decided...
+\section{Features}
+\subsection{Feature normalization}
+The features presented above are incomparable to each other.
+When MajorAxisLength have been normalized with respect to the area, 
+it can be compared to another MajorAxisLength value, 
+even though the zooming of the pictures are not the same. 
+However, the feature MajorAxisLength is incompariable to features of a different type.
+
+In the configuration in table \ref{tab:features}, it's clear that the Solidity reveals that the biscuits
+are different, the MajorAxisLength are however not to different.
+However, when naively comparing by subtraction, MajorAxisLength has a bigger difference.
+To battle this behavior we use the \emph{linear scaling with unit variance} normalization, see equation \ref{eqn:univariance}.
+\begin{equation}
+x_{new} = \frac{x-\mu}{\sigma}
+\label{eqn:univariance}
+\end{equation}
+
+\begin{table}[h!b!p!]
+\caption{Two features of two biscuits}
+\begin{center}i
+    \begin{tabular}{ l | c | c | }
+                    & Biscuit 1 & Biscuit 2 \\ \hline
+    MajorAxisLength & 7.0       & 8.5       \\ \hline
+    Solidity        & 0.11      & 0.9       \\ \hline
+    \end{tabular}
+\end{center}
+\label{tab:features}
+\end{table}
 
 \section{Training on known characters}
 \section{Classifying unkown biscuits}
