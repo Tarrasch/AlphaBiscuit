@@ -1,0 +1,25 @@
+>> w('a')
+
+ans = 
+
+    Eccentricity: 0.6242
+        Solidity: 0.8780
+          Extent: 0.6500
+     ANPerimeter: 5.7346
+       num_holes: 1
+
+>> word2('img/word2/DSC00592.JPG')
+hi
+pbpsh
+u b nicc
+
+
+>> w('b')
+
+ans = 
+
+    Eccentricity: 0.6909
+        Solidity: 0.8897
+          Extent: 0.7851
+     ANPerimeter: 5.0592
+       num_holes: 0

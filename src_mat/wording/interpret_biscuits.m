@@ -23,7 +23,7 @@ for loop_num = 1:n
             best_ix = j;
             best_dist = dist;
             newline = fdy;
-            space = dx/p/3;
+            space = dx/p/2;
         end
     end
     if newline >= 1 && loop_num > 1
@@ -36,5 +36,6 @@ for loop_num = 1:n
     y0 = s(best_ix).Centroid(2);
 end
 
+text = [text '\n'];
 end
 
