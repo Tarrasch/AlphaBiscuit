@@ -14,7 +14,7 @@ s = f(img(:,:,2));
 v = f(img(:,:,3));
 
 % Apply Gaussian filter
-w = fspecial('gaussian', 20, 3);
+w = fspecial('gaussian', 10, 2);
 
 f = @(img) imfilter(img, w, 'replicate');
 h = f(h);
@@ -23,10 +23,10 @@ v = f(v);
 
 h = h.*360;
 
-img_out = s > 0.5 ...
-        & h > 15 & h < 55 ...
-        & v > 0.20 & v < 0.65;
-
+%img_out = s > 0.5 ...
+%        & h > 15 & h < 55 ...
+%        & v > 0.20 ;
+img_out = h > 15 & h < 55;
 
 end
 

@@ -14,6 +14,9 @@ my = STATS.Centroid(2);
 dy = (1:n)'*ones(1, m);
 dx = ones(n, 1)*(1:m); 
 
+mx =  sum(sum(dx.*img))/STATS.Area;
+my =  sum(sum(dy.*img))/STATS.Area;
+
 dy = my - dy;
 dx = mx - dx;
 ds = sqrt(dx.^2+dy.^2);
