@@ -7,7 +7,7 @@ biscs = cell(255,1); % 'a' ..'åäö' Should fit
 
 f = @(img) img;
 g = @(img) imtobinary(f(img));
-h = @(img) calc_properties(g(img));
+h = @(img) imtobinary(f(img));
 
 for c = range
     foldr = ['img/' c '/'];
