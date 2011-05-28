@@ -1,8 +1,8 @@
-function [ img_out ] = imtobinary( img_in )
+function [ img ] = imtobinary( img )
 %IMTOBINARY Turn an RGB image with biscuits to binary image
 %   Detailed explanation goes here
 
-img = rgb2hsv(img_in);
+img = rgb2hsv(img);
 
 % First extract colors channels
 f = @(img) img;
@@ -26,7 +26,7 @@ h = h.*360;
 %img_out = s > 0.5 ...
 %        & h > 15 & h < 55 ...
 %        & v > 0.20 ;
-img_out = h > 15 & h < 55;
+img = h > 15 & h < 55;
 
 end
 
