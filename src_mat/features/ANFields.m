@@ -1,4 +1,4 @@
-function [ fields ] = ANFields( input_args )
+function [ fields ] = ANFields( )
 %ANFIELDS Summary of this function goes here
 %   Detailed explanation goes here
 
