@@ -2,7 +2,6 @@ function [ img ] = imtobinary( img )
 %IMTOBINARY Turn an RGB image with biscuits to binary image
 %   Detailed explanation goes here
 
-disp(img(1,2,3));
 img = rgb2hsv(img);
 
 % First extract colors channels
