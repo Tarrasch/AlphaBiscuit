@@ -37,11 +37,11 @@ In order to optimize our recognition method, some remarks should be made on the 
 To our favour, the biscuits are manufactured, and therfor all biscuits of the same letter looks the same, both in shape and color. 
 On the other hand the solid body form of biscuits can surpress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
 
-The whole identification process is a composition of image processing processes, 
+The identification process is a standard composition of image processing concepts. Segmenting, collecting features and then classifying.
 initially we segment a picture to a black and white image containing only the biscuits, 
-we then collect features from the segmented image, 
-then using a classifier, we classify the unkown biscuit by comparing its features to a set of known biscuits.
-In case of there being several biscuits in the image, a wordizer will organize the letters top to bottom, left to right and read out the word.
+we then collect features from the segmented image. 
+The classification is based on the features, we classify the unkown biscuit by comparing its features to a set of known biscuits.
+In case of there being several biscuits in the image, a wordizer will organize the letters and read out the word.
 
 The segmentation process is well studied for \emph{general} objects, but the fact that the biscuits are of the same colors must be used.
 One challenge is to develop our own segmentation method.
@@ -68,7 +68,37 @@ Figure \ref{fig:unprocessed} contains three photographed images used throughout 
 Among the biscuits, there are only capital letters present. A few letters are missing.
 
 \section{Segmentation}
-The segmentation is to be decided...
+
+When studying the biscuits as an \emph{object},
+it's clear that the biscuits are only of one color,
+but when studying images of biscuits, 
+the pixels corresponding to the biscuit varies in color because of different lightning.
+As humans this don't bother us, we automatically segment objects apart.
+In image analysis, segmenting means to decide which pixels are actually of interest to us.
+There are many known segmentation methods available.
+And they work differently good for different segmentation tasks.
+
+We want a segmentation method that uses the fact that the biscuits are of the same color.
+One sensible segmentation method is to define a set of the RGB-colors representing usable colors.
+That means pixels are interesting only if its color is in the set.
+
+In this project, we implemented sementation with the above mentioned idea in mind.
+Since it worked sufficiently well, we did not examine more possibilites. 
+\emph{Thresholding} can quite easily implement the set idea in practice.
+
+
+
+\subsection{Thresholding}
+We threshold directly on the color image, treating each pixel individually. 
+That means that we don't threshold on greycolor images,
+neither do we turn a color image into greyscale as an intermediete step.
+
+By treating 
+Our aim in using each color in a non individually we are close to actually use
+
+
+
+
 \section{Features}
 We considered to use the following features
 \begin{itemize}
