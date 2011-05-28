@@ -13,8 +13,8 @@ clear Imgs c foldr file all_files
 % Now add quickshow functions
 sn = @(c, i) imshow(biscs{c}{i}.Image);
 s  = @(c) sn(c,1);
-sa = @(c)arrayfun(@(i){figure(i),imshow(biscs{c}{i}.Image)},...
-         1:size(biscs{c}),'uniformOutput',false);  
+sa = @(c){close('all'),arrayfun(@(i){figure(i),imshow(biscs{c}{i}.Image)},...
+         1:size(biscs{c}),'uniformOutput',false)};
 
 
 wn = @(c, i) stat_filterprops(biscs{c}{i});

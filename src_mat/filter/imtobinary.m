@@ -3,7 +3,7 @@ function [ img ] = imtobinary( img )
 %   Detailed explanation goes here
 
 % Apply Gaussian filter
-w = fspecial('gaussian', 5, 1);
+w = fspecial('gaussian', 15, 4);
 
 f = @(img) imfilter(img, w, 'replicate');
 r = f(img(:,:,1));
