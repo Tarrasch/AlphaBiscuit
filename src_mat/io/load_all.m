@@ -2,7 +2,7 @@
 % By having this file, I can start working immidietly cause
 % I don't need to put in these commands manually all the time
 
-start = now;
+tic
 all_files = dir('img/');
 
 biscs = load_biscs(chars);
@@ -28,5 +28,4 @@ nclassy2 = @(b) classifier_nearest(nbiscs, transform(b));
 if ~all(arrayfun(@(s) numel(s{1}), flatten_cells(biscs)) == 1)
     disp 'Biscuits are split, they form islands!'
 end
-disp('Time elapsed:')
-disp(second(now - start));
+toc
