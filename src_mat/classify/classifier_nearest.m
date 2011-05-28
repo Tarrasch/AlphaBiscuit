@@ -4,11 +4,9 @@ function [ character, ix ] = classifier_nearest( biscs, bisc)
 
 curr_max_dist = inf;
 
-for c = 'a':'ö'
-    n = numel(biscs{c});
-    f = @(i) biscs{c}{i};
-    for i = 1:n
-        d = bisc_dist(f(i), bisc);
+for c = ['a':'z' 'åäö']
+    for i = 1:numel(biscs{c})
+        d = bisc_dist(biscs{c}{i}, bisc);
         if d < curr_max_dist 
             curr_max_dist = d;
             character = c; 
