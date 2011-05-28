@@ -2,7 +2,7 @@ function [] = analyze_failures( biscs )
 %ANALYZE_FAILURES Check where failures appear and to which it finds better
 %   Detailed explanation goes here
 
-for c = 'a':'ö'
+for c = ['a':'z' 'åäö']
     n = numel(biscs{c});
     for i = 1:n
         temp_biscs = biscs;
