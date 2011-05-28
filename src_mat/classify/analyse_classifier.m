@@ -5,7 +5,7 @@ function [ ratio ] = analyse_classifier( biscs, classifier)
 hits = 0;
 total = 0;
 
-for c = 'a':'ö'
+for c = ['a':'z' 'åäö']
     n = numel(biscs{c});
     for i = 1:n
         if classify(biscs, c, i, classifier) == c

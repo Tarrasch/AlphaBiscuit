@@ -15,6 +15,5 @@ for c = ['a':'z' 'åäö']
     end
 end
 
-
 end
 
