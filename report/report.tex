@@ -65,7 +65,7 @@ Figure \ref{fig:unprocessed} contains three photographed images used throughout 
 \end{figure}
 
 Among the biscuits, there are only capital letters present. A few letters are missing.
-
+There are totally $177$ images of single biscuits that the classifier trained on.
 \section{Segmentation}
 
 When studying the biscuits as an \emph{object},
@@ -115,8 +115,12 @@ We considered to use the following features
 \item Major Axis Length
 \item Solidity - Also called convexity
 \item Momentum - An easily turnable (easy for a given mass) object has a high momentum, for example the letter I. Momentum is calculated by summing for each pixel it's distance from the center-weight. The momentum feature can be measured for different exponents on the distance for each pixel.
-\item ... - ...
+\item Eccentricity
+\item Perimetry
+\item Number of holes - An \emph{A} has one hole, but a \emph{B} has two holes.
 \end{itemize}
+It should be noted that the feature Number of holes isn't failproof,
+since bad segmentation can create small holes, or cover actual holes.
 \subsection{Feature normalization}
 The features presented above are incomparable to each other.
 When MajorAxisLength have been normalized with respect to the area, 
@@ -157,7 +161,11 @@ We do partially adress this problem by using \emph{binary} weights on the featur
 that is equivelent to simply not using some features.
 This is helpful when a feature is having a negative impact on the overall classification.
 We use the \emph{greedy backward elimination} method in our feature selection.
-\section{Classifying unkown biscuits}
+\section{Classifying unknown biscuits}
+Classification, in our case, is to determine the letter of an unkown biscuit, given the features of manually classified biscuits.
+
+We use the simple \emph{Nearest Neighbour} classifier, with distance defined as the euclidean distance.
+
 \section{Wordizer}
 If an image contains many letters, the letters are often representing words.
 The wordizer is sweeping through the letters and makes one sentence with the letters by examining the positions of each letter.
