@@ -47,7 +47,6 @@ The segmentation process is well studied for \emph{general} objects, but the fac
 One challenge is to develop our own segmentation method.
 The method created for biscuit segmentation could also be used for other segmentation purposes where the data is having similiar properties.
 
-%\section{Method}
 \section{Data collection}
 A low quality camera (mobile camera) have been used to photograph all the images.
 Consequently of the low quality, the segmentation algorithm must be developed to be very robust, this is achievable as the biscuits are all of the same colors.
@@ -91,10 +90,26 @@ We threshold directly on the color image, treating each pixel individually.
 That means that we don't threshold on greycolor images,
 neither do we turn a color image into greyscale as an intermediete step.
 
-By treating 
+With expressfulness over the three color channels, 
+we can easily define a reasonable set of biscuits-colors.
+The biscuits are always more red than green, and always more green than blue.
+With threholding this property can be easily stated as simply $r>g>b$.
+The exact mathematical thresholding used in our implementation is $ ... $
+power to
 Our aim in using each color in a non individually we are close to actually use
 
 
+
+
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=40mm]{seg_a.JPG}
+\includegraphics[width=40mm]{seg_i.JPG}
+\includegraphics[width=40mm]{seg_word.JPG}
+\end{center}
+\caption{Three segmented images using thresholding}
+\label{fig:segmented}
+\end{figure}
 
 
 \section{Features}
