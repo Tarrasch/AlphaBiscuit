@@ -1,4 +1,4 @@
-function [] = analyze_failures( biscs )
+function [] = analyze_failures( biscs, features )
 %ANALYZE_FAILURES Check where failures appear and to which it finds better
 %   Detailed explanation goes here
 
@@ -8,7 +8,7 @@ for c = ['a':'z' 'åäö']
         temp_biscs = biscs;
         bisc = biscs{c}{i};
         biscs{c}(i) = [];
-        fbiscs = sort_by_nearest(biscs, bisc);
+        fbiscs = sort_by_nearest(biscs, bisc, features);
         
         ix = 1;
         while fbiscs{ix}.char ~= c && ix <= numel(fbiscs)
@@ -19,9 +19,11 @@ for c = ['a':'z' 'åäö']
             disp('Failure, other cracker was closer!');
             disp('Orig:')
             disp(stat_filterprops(bisc));
-            disp(['Best Challenger (' num2str(bisc_dist(bisc, fbiscs{1})) ') :'])
+            d = num2str(bisc_dist(bisc, fbiscs{1}, features));
+            disp(['Best Challenger (' d ') :'])
             disp(stat_filterprops(fbiscs{1}));
-            disp(['Closest real (' num2str(bisc_dist(bisc, fbiscs{ix})) ') (' num2str(ix) ') :'])
+            d = num2str(bisc_dist(bisc, fbiscs{ix}, features));
+            disp(['Closest real (' d ') (' num2str(ix) ') :'])
             disp(stat_filterprops(fbiscs{ix}));
             disp('');
             
