@@ -7,4 +7,5 @@
 *.out
 *goutput*
 report/*.pdf
+report/.nfs000000*
 
