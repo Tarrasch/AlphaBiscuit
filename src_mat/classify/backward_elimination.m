@@ -6,6 +6,7 @@ function [ features ] = backward_elimination( biscs, classifier, features )
 n = numel(features);
 best_features = features;
 best_cost = analyse_classifier(biscs, classifier, features);
+old_cost = best_cost;
 
 for i = 1:n
     red_features = features;
@@ -15,10 +16,12 @@ for i = 1:n
     if cost >= best_cost
         best_features = red_features;
         best_cost = cost;
+        removed = features{i};
     end
 end
 
 if numel(best_features) ~= n % if we did eliminate with advantage
+    disp(['Removed ' removed ' to get from ' num2str(old_cost) ' to ' num2str(best_cost)]);
     features = backward_elimination( biscs, classifier, best_features);
 end
 

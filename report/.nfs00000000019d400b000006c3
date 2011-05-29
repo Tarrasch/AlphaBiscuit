@@ -48,8 +48,8 @@ One challenge is to develop our own segmentation method.
 The method created for biscuit segmentation could also be used for other segmentation purposes where the data is having similiar properties.
 
 \section{Data collection}
-Initially, a low quality camera (mobile camera) was used to photograph all the images.
-Later this was changed to use a much better camera with more organized photography.
+A low quality camera (mobile camera) have been used to photograph all the images.
+Consequently of the low quality, the segmentation algorithm must be developed to be very robust, this is achievable as the biscuits are all of the same colors.
 The biscuits are laid on a blank white paper, so the whole background is white when photographing, this avoids to catch anything with simliar colors as the biscuits on the image, as that would distract the segmenter.
 All the biscuits used are from the commercial brand named BRAGO BOKSTAVSKEX.
 Figure \ref{fig:unprocessed} contains three photographed images used throughout this paper.
@@ -114,7 +114,7 @@ We considered to use the following features
 \begin{itemize}
 \item Major Axis Length
 \item Solidity - Also called convexity
-\item Momentum - An easily turnable (easy for a given mass) object has a high momentum, for example the letter I. Momentum is calculated by summing for each pixel it's distance from the center-weight. The momentum feature can be measured for different exponents on the distance for each pixel. We used three features of this kind with the exponents 1,2 and 3.
+\item Momentum - An easily turnable (easy for a given mass) object has a high momentum, for example the letter I. Momentum is calculated by summing for each pixel it's distance from the center-weight. The momentum feature can be measured for different exponents on the distance for each pixel.
 \item Eccentricity
 \item Perimetry
 \item Number of holes - An \emph{A} has one hole, but a \emph{B} has two holes.
@@ -171,70 +171,9 @@ If an image contains many letters, the letters are often representing words.
 The wordizer is sweeping through the letters and makes one sentence with the letters by examining the positions of each letter.
 If visually clear enough, the wordizer will put whitespace (spaces and newlines) in the sentence where appropriate.
 \section{Results}
-The result section will show the results of a cross-validation process, look at a failing example and end with a section about reading out a word image.
-\subsection{Cross-validation}
-Given the data described, using the classification methods mentioned, we ran the backwards-elimination process.
-Starting with the features listed in the features section, table \ref{tab:backelim} shows what features
-where eliminated and for what gain using backwards-elimination.
-The CV-value is the ratio of correctly identified biscuits using cross validation.
-
-
-\begin{table}[h!b!p!]
-\caption{Backwards elimination}
-\begin{center}
-    \begin{tabular}{ l | c | c | }
-    Feature         & Previous CV-value \\ \hline
-    Solidity        & 97.18\%           \\ \hline
-    Number of holes & 97.77\%           \\ \hline
-    \end{tabular}
-\end{center}
-\label{tab:backelim}
-\end{table}
-
-So the final feature configuration became: Perimetry, Eccentricity and the three versions of momentum.
-That configuration gave us a CV-value of $98.87\%$.
-
-Running the same procedure on a slightly reduced character-set without å, ä and ö,
-the final feature configuration is $ Perimetry, Eccentricity, Solidity  and momentum with exponent one$ and has a CV-value of exactly $100\%$. 
-
-
-\subsection{Wordizing the alphabet}
-Wordizing the Image in figure \ref{fig:alphabet} gives the following output:
-... output ...
-
-\begin{figure}[]
-\begin{center}
-\includegraphics[width=140mm]{alphabet.JPG}
-\end{center}
-\caption{An image of all the character types present in the data set}
-\label{fig:alphabet}
-\end{figure}
-
-
-
-
-
-
-
-
-
-
-
+No results yet.
 \section{Discussion}
-
-Even though simplicity in segmentation, feature extraction and especially classification, the results was good.
-However, the input images are friendly to work with,
-there is no deliberate noise, the lightning is constantified by the use of camera lightning and the camera was put stable on a tripod.
-An undocumented experiment showed a CV-value of about 85\% as best with the old data-set 
-
-The feature elimination seem quite untrustworthy,
-with a quite tiny modification in the data set,
-a quite different set of features was suggested by backwards-elimination.
-This might be due to that with the full data-set,
-quite a lot of the effort of the backwards-elimination was to minimize frequent a, å and ä clashes.
-But with a data-set without such worries, the elimination focused on smaller details.
-Thus eliminating diffrently for the similiar data-sets.
-
+No impacts found, yet.
 \section{References}
 \section{Appendice}
 
