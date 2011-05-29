@@ -91,13 +91,10 @@ That means that we don't threshold on greycolor images,
 neither do we turn a color image into greyscale as an intermediete step.
 
 With expressfulness over the three color channels, 
-we can easily define a reasonable set of biscuits-colors.
+we can easily define a reasonable set of biscuit-colors.
 The biscuits are always more red than green, and always more green than blue.
-With threholding this property can be easily stated as simply $r>g>b$.
-The exact mathematical thresholding used in our implementation is $ ... $
-power to
-Our aim in using each color in a non individually we are close to actually use
-
+With threholding this property can be easily stated as $r>g>b$.
+The exact mathematical thresholding used in our implementation is $ r > 50 & 30 < g < 200 & b < 150 & r > 1.2*g & g > 1.2*b $.
 
 
 
