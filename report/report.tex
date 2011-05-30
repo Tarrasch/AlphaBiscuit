@@ -19,7 +19,7 @@
     Letter biscuits have been around for many decades, but digital image
 analysis are only beginning to find applications in the real world.
 Typing with letter biscuits is joyful for children, using image analysis
-one could create electronical activities that involves these biscuits,
+one could create electronic activities that involves these biscuits,
 such activities could improve literacy among children. This paper take
 a statistical approach to automatically classify alphabet biscuits,
 applying known techniques from image analysis. Using the classifier, we
@@ -32,30 +32,31 @@ biscuits in a clean 'word-image', perhaps rendering the classifier inadequate.
 \end{abstract}
 
 \section{Introduction}
-The recognition of letter biscuits is similiar to many other image recognition problems.
+The recognition of letter biscuits is similar to many other image recognition problems.
 Image recognition being well developed already, only little new research have been made for this project.
 Rather, a way to combine existing techniques will be presented.
 
 In order to optimize our recognition method, some remarks should be made on the type of data we are working with.
-To our favour, the biscuits are manufactured, and therfor all biscuits of the same letter looks the same, both in shape and color. 
-On the other hand the solid body form of biscuits can surpress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
+To our favour, the biscuits are manufactured, and therefor all biscuits of the same letter looks the same, both in shape and color. 
+On the other hand the solid body form of biscuits can suppress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
 
 The identification process is a standard composition of image processing concepts. Segmenting, collecting features and then classifying.
 initially we segment a picture to a black and white image containing only the biscuits, 
 we then collect features from the segmented image. 
-The classification is based on the features, we classify the unkown biscuit by comparing its features to a set of known biscuits.
+The classification is based on the features, we classify the unknown biscuit by comparing its features to a set of known biscuits.
 In case of there being several biscuits in the image, a wordizer will organize the letters and read out the word.
 
 The segmentation process is well studied for \emph{general} objects, but the fact that the biscuits are of the same colors must be used.
 One challenge is to develop our own segmentation method.
-The method created for biscuit segmentation could also be used for other segmentation purposes where the data is having similiar properties.
+The method created for biscuit segmentation could also be used for other segmentation purposes where the data is having similar properties.
 
 \section{Data collection}
 Initially, a low quality camera (mobile camera) was used to photograph all the images.
 Later this was changed to use a much better camera with more organized photography.
-The biscuits are laid on a blank white paper, so the whole background is white when photographing, this avoids to catch anything with simliar colors as the biscuits on the image, as that would distract the segmenter.
+The biscuits are laid on a blank white paper, so the whole background is white when photographing, this avoids to catch anything with similar colors as the biscuits on the image, as that would distract the segmentation.
+There is no deliberate noise, the lightning is stabilized by the use of camera lightning and the camera was put stable on a tripod.
 All the biscuits used are from the commercial brand named BRAGO BOKSTAVSKEX.
-Figure \ref{fig:unprocessed} contains three photographed images used throughout this paper.
+Figure \ref{fig:unprocessed} contains two typical unprocessed images from the data set.
 
 \begin{figure}[]
 \begin{center}
@@ -94,24 +95,24 @@ One sensible segmentation method is to define a set of the RGB-colors representi
 That means pixels are interesting only if its color is in the set.
 
 In this project, we implemented our segmentation with the above mentioned ideas in mind.
-Since it worked sufficiently well, we did not examine more possibilites. 
+Since it worked sufficiently well, we did not examine more possibilities. 
 \emph{Thresholding} can quite easily implement the set idea in practice.
 
 \subsection{Thresholding}
 We threshold directly on the color image, treating each pixel individually. 
-That means that we don't threshold on greycolor images,
-neither do we turn a color image into greyscale as an intermediete step.
+That means that we don't threshold on grey-scale images,
+neither do we turn a color image into grey-scale as an intermediate step.
 
-With expressfulness over the three color channels, 
+With expressivity over the three color channels, 
 we can easily define a reasonable set of biscuit-colors.
 For example, the biscuits are always more red than green, and always more green than blue.
-With threholding this property can be easily stated as $r>g>b$.
+With thresholding this property can be easily stated as $r>g>b$.
 The exact mathematical thresholding used in our implementation is
 $ r > 50 \wedge 30 < g < 200 \wedge b < 150 \wedge r > 1.2*g \wedge g > 1.2*b $.
-Where $\wedge$ stands for logical conjuction. r, g and b stands for red, green and blue, respectively.
+Where $\wedge$ stands for logical conjunction. r, g and b stands for the red, green and blue component of the RGB-component, respectively.
 
 The input images are also of a low JPG quality, meaning that adjacent pixels can vary more than they are supposed to.
-To battle this, we also run a gaussian filter on each color channel before thresholding.
+To battle this, we also run a Gaussian filter on each color channel before thresholding.
 
 
 \begin{figure}[]
@@ -134,14 +135,14 @@ We considered to use the following features
 \item Perimetry
 \item Number of holes - An \emph{A} has one hole, but a \emph{B} has two holes.
 \end{itemize}
-It should be noted that the feature Number of holes isn't failproof,
+It should be noted that the feature Number of holes isn't fail proof,
 since bad segmentation can create holes, or cover actual holes.
 \subsection{Feature normalization}
 The features presented above are incomparable to each other.
 When MajorAxisLength have been normalized with respect to the area, 
 it can be compared to another MajorAxisLength value, 
 even though the zooming of the pictures are not the same. 
-However, the feature MajorAxisLength is incompariable to features of a different type.
+However, the feature MajorAxisLength is incomparable to features of a different type.
 
 In the configuration in table \ref{tab:features}, it's clear that the Solidity reveals that the biscuits
 are different, the MajorAxisLength are however not to different.
@@ -166,18 +167,18 @@ x_{new} = \frac{x - \mu}{\sigma}
 \end{equation}
 
 After this transformation, all features have a mean of $0$ and variance of $1$.
-Now it's more senseful to compare two different features, or to take the euclidean distance between two biscuits (set of features).
+Now it's more sensible to compare two different features, or to take the euclidean distance between two biscuits (set of features).
 \subsection{Feature selection}
 With feature normalization taken in place, there is yet no weighting of the features,
-perhaps a large difference in MajorAxisLength definetly tells two biscuits apart,
-meanwhile a large difference in Solidity sould be considered less significant.
+perhaps a large difference in MajorAxisLength definitely tells two biscuits apart,
+meanwhile a large difference in Solidity should be considered less significant.
 
-We do partially adress this problem by using \emph{binary} weights on the features, 
-that is equivelent to simply not using some features.
+We do partially address this problem by using \emph{binary} weights on the features, 
+that is equivalent to simply not using some features.
 This is helpful when a feature is having a negative impact on the overall classification.
 We use the \emph{greedy backward elimination} method in our feature selection.
 \section{Classifying unknown biscuits}
-Classification, in our case, is to determine the letter of an unkown biscuit, given the features of manually classified biscuits.
+Classification, in our case, is to determine the letter of an unknown biscuit, given the features of manually classified biscuits.
 
 We use the simple \emph{Nearest Neighbour} classifier, with distance defined as the euclidean distance.
 
@@ -246,21 +247,20 @@ The newlines and spaces were automatically identified by the wordizer.
 
 \section{Discussion}
 
-Even though simplicity in segmentation, feature extraction and especially classification, the results was good.
-However, the input images are friendly to work with,
-there is no deliberate noise, the lightning is constantified by the use of camera lightning and the camera was put stable on a tripod.
+Even though overall simplicity, especially in classification, the cross-validation results are very good.
+But on the other side, the input images are friendly to work with.
 An undocumented experiment showed a CV-value of about 85\% as best with the old data-set 
 
-The feature elimination seem quite untrustworthy,
-with a quite tiny modification in the data set,
+The feature elimination shows a shaky behavior,
+with a small modification in the data set,
 a quite different set of features was suggested by backwards-elimination.
 This might be due to that with the full data-set,
-quite a lot of the effort of the backwards-elimination was to minimize frequent a, å and ä clashes.
+most of the effort by backwards-elimination was to minimize frequent a, å and ä clashes.
 But with a data-set without such worries, the elimination focused on smaller details.
-Thus eliminating diffrently for the similiar data-sets.
+Thus eliminating differently for the similar data-sets.
 
 \section{References}
-\section{Appendice}
+\section{Appendix}
 
 
 \end{document}
