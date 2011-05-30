@@ -27,8 +27,8 @@ a statistical approach to automatically classify alphabet biscuits,
 applying known techniques from image analysis. Using the classifier, we
 then create a word reader that extracts words from an image of letter
 biscuits.
-The final classifier reach a near-perfect result in the cross-validation,
-however it doesn't identify all biscuits in a clean 'word-image'.
+Result wise, the final classifier performs near-perfect in the cross-validation,
+however it doesn't always identify all biscuits in a clean 'word-image'.
 
 \end{abstract}
 
@@ -200,8 +200,8 @@ The result section will show the results of a cross-validation process, look at 
 \subsection{Cross-validation}
 Given the data described, using the classification methods mentioned, we ran the backwards-elimination process.
 Starting with the features listed in the features section, table \ref{tab:backelim} shows what features
-where eliminated and for what gain using backwards-elimination.
-The CV-value is the ratio of correctly identified biscuits using cross validation.
+where eliminated and for what gain.
+The CV-value is the ratio of correctly identified biscuits using cross validation over the total number of biscuits.
 
 
 \begin{table}[h!b!p!]
@@ -216,13 +216,13 @@ The CV-value is the ratio of correctly identified biscuits using cross validatio
 \label{tab:backelim}
 \end{table}
 
-So the final feature configuration became: Perimetry, Eccentricity and the three versions of momentum.
+So the final feature configuration became: Perimetry, Eccentricity and all three versions of momentum.
 That configuration gave us a CV-value of $98.87\%$.
 One missclassificatio can be seen in figure \ref{fig:misclas},
 an E was misclassified for an K. The K have a distance of $0.331$,
 and the closest correct character have a distance of $1.226$.
-Their exact normalized features can be seen in \ref{tab:misclas},
-their where $15$ candidates between the K and the closest E.
+Their normalized features can be seen in \ref{tab:misclas},
+it is $15$ candidates between the K and the closest E.
 
 \begin{figure}[]
 \begin{center}
@@ -230,7 +230,7 @@ their where $15$ candidates between the K and the closest E.
 \includegraphics[width=40mm]{closest.png}
 \includegraphics[width=40mm]{closest_correct.png}
 \end{center}
-\caption{An example of a misclassifcation. 
+\caption{An example of a misclassification. 
          The left image is the one we tried to classify. 
          The middle image is the closest neighbour.
          The right is the closest correct neighbour.}
@@ -267,7 +267,7 @@ uäunted \\
 men \\
 }
 
-The some procedure with the reduced character-set yields the interpretation:
+The same procedure with the reduced character-set yields the interpretation:
 
 \texttt{ \\
 dkeaming \\
@@ -295,22 +295,35 @@ But on the other side, the input images are friendly to work with.
 An undocumented experiment showed a CV-value of about 85\% with the old data-set 
 
 The feature elimination shows a shaky behavior.
-For two the two data sets, that are very much alike,
-two a quite different set of features was suggested by backwards-elimination.
+For the two data sets, that are very much alike,
+two quite different set of features was suggested by backwards-elimination.
 This might be due to that with the full data-set,
 most of the effort by backwards-elimination was to minimize frequent a, å and ä clashes.
 But with a data-set without such worries, the elimination focused on smaller details.
-Thus eliminating differently for the similar data-sets.
 
 The result of the cross-validation where good, but the wordizing didn't perform as good.
 It's however not reliable to state the condition of the project
 based on one image. It would be interesting to try the wordizer on more examples.
 
+The misclassification seen in Figure \ref{fig:misclas} is most likely
+because of the bad segmentation at the bottom of the E.
+At the same time, it's also obvious that some feature
+should be able to clearly distinguish the E from the K.
+Perhaps a feature that can detect the 'cracks' in the top and bottom
+of the K would distinguish E from K.
+
 \section{Conclusions}
-The classifier could identify
+The classifier performed outstanding in the cross-validation, 
+but could not read out a word correctly, however word reading have not been
+carefully measured in this report.
+
+All features examined are rotation invariant, but the wordizer requires a normally angled view to assemble the words correctly.
+The data worked on were very simple.
+If a set of less clean images where to be used,
+it would only be necessary to improve the segmentation part.
 
 \section{Appendix}
-All code, images and more is available at the project's github page \hyperref{https://github.com/Tarrasch/AlphaBiscuit}.
+All code, images and more is available at the project's \href{https://github.com/Tarrasch/AlphaBiscuit}{github page} .
 
 
 
