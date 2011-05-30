@@ -25,6 +25,9 @@ a statistical approach to automatically classify alphabet biscuits,
 applying known techniques from image analysis. Using the classifier, we
 then create a word reader that extracts words from an image of letter
 biscuits.
+The final classifier reach a near-perfect result on the training data
+when using cross-validation, however it doesn't perfectly classify
+biscuits in a clean 'word-image', perhaps rendering the classifier inadequate.
 
 \end{abstract}
 
@@ -79,7 +82,7 @@ Figure \ref{fig:alphabet} shows all the characters present in the data.
 
 When studying the biscuits as an \emph{object},
 it's clear that the biscuits are only of one color,
-but when studying images of biscuits, 
+but when studying \emph{images} of biscuits, 
 the pixels corresponding to the biscuit varies in color because of different lightning.
 As humans this don't bother us, we automatically segment objects apart.
 In image analysis, segmenting means to decide which pixels are actually of interest to us.
@@ -90,7 +93,7 @@ We want a segmentation method that uses the fact that the biscuits are of the sa
 One sensible segmentation method is to define a set of the RGB-colors representing usable colors.
 That means pixels are interesting only if its color is in the set.
 
-In this project, we implemented sementation with the above mentioned idea in mind.
+In this project, we implemented our segmentation with the above mentioned ideas in mind.
 Since it worked sufficiently well, we did not examine more possibilites. 
 \emph{Thresholding} can quite easily implement the set idea in practice.
 
@@ -101,16 +104,20 @@ neither do we turn a color image into greyscale as an intermediete step.
 
 With expressfulness over the three color channels, 
 we can easily define a reasonable set of biscuit-colors.
-The biscuits are always more red than green, and always more green than blue.
+For example, the biscuits are always more red than green, and always more green than blue.
 With threholding this property can be easily stated as $r>g>b$.
-The exact mathematical thresholding used in our implementation is $ r > 50 & 30 < g < 200 & b < 150 & r > 1.2*g & g > 1.2*b $.
+The exact mathematical thresholding used in our implementation is
+$ r > 50 \wedge 30 < g < 200 \wedge b < 150 \wedge r > 1.2*g \wedge g > 1.2*b $.
+Where $\wedge$ stands for logical conjuction. r, g and b stands for red, green and blue, respectively.
 
+The input images are also of a low JPG quality, meaning that adjacent pixels can vary more than they are supposed to.
+To battle this, we also run a gaussian filter on each color channel before thresholding.
 
 
 \begin{figure}[]
 \begin{center}
-\includegraphics[width=40mm]{seg_a.JPG}
-\includegraphics[width=40mm]{seg_i.JPG}
+\includegraphics[width=40mm]{seg_a.png}
+\includegraphics[width=40mm]{seg_i.png}
 \end{center}
 \caption{Two segmented images using thresholding}
 \label{fig:segmented}
@@ -122,13 +129,13 @@ We considered to use the following features
 \begin{itemize}
 \item Major Axis Length
 \item Solidity - Also called convexity
-\item Momentum - An easily turnable (easy for a given mass) object has a high momentum, for example the letter I. Momentum is calculated by summing for each pixel it's distance from the center-weight. The momentum feature can be measured for different exponents on the distance for each pixel. We used three features of this kind with the exponents 1,2 and 3.
+\item Momentum - An easily turnable (easy for a given mass) object has a high momentum, for example the letter I. Momentum is calculated by summing for each pixel it's distance from the center-weight. The momentum feature can be measured for different exponents on the distance for each pixel. We used three features of this kind with exponents 1,2 and 3.
 \item Eccentricity
 \item Perimetry
 \item Number of holes - An \emph{A} has one hole, but a \emph{B} has two holes.
 \end{itemize}
 It should be noted that the feature Number of holes isn't failproof,
-since bad segmentation can create small holes, or cover actual holes.
+since bad segmentation can create holes, or cover actual holes.
 \subsection{Feature normalization}
 The features presented above are incomparable to each other.
 When MajorAxisLength have been normalized with respect to the area, 
@@ -190,7 +197,7 @@ The CV-value is the ratio of correctly identified biscuits using cross validatio
 \begin{table}[h!b!p!]
 \caption{Backwards elimination}
 \begin{center}
-    \begin{tabular}{ l | c | c | }
+    \begin{tabular}{ | l | c | c | }
     Feature         & Previous CV-value \\ \hline
     Solidity        & 97.18\%           \\ \hline
     Number of holes & 97.77\%           \\ \hline
@@ -203,30 +210,38 @@ So the final feature configuration became: Perimetry, Eccentricity and the three
 That configuration gave us a CV-value of $98.87\%$.
 
 Running the same procedure on a slightly reduced character-set without å, ä and ö,
-the final feature configuration is $ Perimetry, Eccentricity, Solidity  and momentum with exponent one$ and has a CV-value of exactly $100\%$. 
+the final feature configuration is Perimetry, Eccentricity, Solidity and momentum with exponent one.
+That configuration yields a CV-value of exactly $100\%$. 
 
 
 \subsection{Wordizing the alphabet}
-Wordizing the Image in figure \ref{fig:alphabet} gives the following output:
-... output ...
-\texttt{
-dkxåhing
-hxn äåx
-uäunted
-men
-}
-\texttt{
-dkeaming
-hen are
-uaunted
-men
+Wordizing the Image in figure \ref{fig:dreaming} gives the following output:
+
+\texttt{ \\
+dkxåhing \\
+hxn äåx \\
+uäunted \\
+men \\
 }
 
+The some procedure with the reduced character-set yields the interpretation:
 
+\texttt{ \\
+dkeaming \\
+hen are \\
+uaunted \\
+men \\
+}
 
+The newlines and spaces were automatically identified by the wordizer.
 
-
-
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=140mm]{dreaming.JPG}
+\end{center}
+\caption{An image that can be wordized}
+\label{fig:dreaming}
+\end{figure}
 
 
 \section{Discussion}
