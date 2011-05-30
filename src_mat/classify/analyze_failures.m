@@ -18,13 +18,13 @@ for c = ['a':'z' 'åäö']
             disp('############### FAILURE ################');
             disp('Failure, other cracker was closer!');
             disp('Orig:')
-            disp(stat_filterprops(bisc));
+            disp(stat_filterprops(bisc, features));
             d = num2str(bisc_dist(bisc, fbiscs{1}, features));
             disp(['Best Challenger (' d ') :'])
-            disp(stat_filterprops(fbiscs{1}));
+            disp(stat_filterprops(fbiscs{1}, features));
             d = num2str(bisc_dist(bisc, fbiscs{ix}, features));
             disp(['Closest real (' d ') (' num2str(ix) ') :'])
-            disp(stat_filterprops(fbiscs{ix}));
+            disp(stat_filterprops(fbiscs{ix}, features));
             disp('');
             
             figure(1), imshow(bisc.Image);

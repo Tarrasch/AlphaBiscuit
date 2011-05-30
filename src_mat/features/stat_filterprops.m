@@ -1,9 +1,8 @@
-function [ out_STATS ] = stat_filterprops( STATS )
+function [ out_STATS ] = stat_filterprops( STATS, fields )
 %STAT_FILTERPROPS Removes non-measureable fields from the stat
 %   Detailed explanation goes here
 
-afields= ANFields();
-fields_to_remove = setdiff(fieldnames(STATS), afields);
+fields_to_remove = setdiff(fieldnames(STATS), fields);
 
 for f = fields_to_remove
     if isfield(STATS, f)
