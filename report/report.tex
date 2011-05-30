@@ -38,14 +38,22 @@ Image recognition being well developed already, only little new research have be
 Rather, a way to combine existing techniques will be presented.
 
 In order to optimize our recognition method, some remarks should be made on the type of data we are working with.
-To our favour, the biscuits are manufactured, and therefor all biscuits of the same letter looks the same, both in shape and color. 
-On the other hand the solid body form of biscuits can suppress distinguishable characteristics. For example, the hole in the letter A is small, perhaps unnoticeable, due to the overall thickness of the biscuits. Another problem, when dealing with letter recognition in general is the multitude of letters to identify from.
+To our favour, the biscuits are manufactured, and therefor all biscuits
+of the same letter looks the same, both in shape and color.  On the
+other hand the solid body form of biscuits can suppress distinguishable
+characteristics. For example, the hole in the letter A is small, perhaps
+unnoticeable, due to the overall thickness of the biscuits. Another
+problem, when dealing with letter recognition in general is the multitude
+of letters to identify from.
 
-The identification process is a standard composition of image processing concepts. Segmenting, collecting features and then classifying.
-Initially we segment a picture to a black and white image containing only the biscuits, 
-we then collect features from the segmented image. 
-The classification is based on the features, we classify the unknown biscuit by comparing its features to a set of known biscuits.
-In case of there being several biscuits in the image, a wordizer will organize the letters and read out the word.
+The identification process is a standard composition of image processing
+concepts. Segmenting, collecting features and then classifying.
+Initially we segment a picture to a black and white image containing
+only the biscuits, we then collect features from the segmented image.
+The classification is based on the features, we classify the unknown
+biscuit by comparing its features to a set of known biscuits.  In case
+of there being several biscuits in the image, a wordizer will organize
+the letters and read out the word.
 
 The segmentation process is well studied for \emph{general} objects, but the fact that the biscuits are of the same colors must be used.
 One challenge is to develop our own segmentation method.
@@ -210,13 +218,21 @@ The CV-value is the ratio of correctly identified biscuits using cross validatio
 
 So the final feature configuration became: Perimetry, Eccentricity and the three versions of momentum.
 That configuration gave us a CV-value of $98.87\%$.
+One missclassificatio can be seen in figure \ref{fig:misclas}.
+
+\begin{figure}[]
+\begin{center}
+\includegraphics[width=40mm]{.JPG}
+\end{center}
+\caption{}
+\label{fig:misclas}
+\end{figure}
 
 Running the same procedure on a slightly reduced character-set without å, ä and ö,
 the final feature configuration is Perimetry, Eccentricity, Solidity and momentum with exponent one.
 That configuration yields a CV-value of exactly $100\%$. 
 
-
-\subsection{Wordizing the alphabet}
+\subsection{Wordizing}
 Wordizing the Image in figure \ref{fig:dreaming} gives the following output:
 
 \texttt{ \\
@@ -236,6 +252,7 @@ men \\
 }
 
 The newlines and spaces were automatically identified by the wordizer.
+No other wordizing was performed.
 
 \begin{figure}[]
 \begin{center}
@@ -250,18 +267,26 @@ The newlines and spaces were automatically identified by the wordizer.
 
 Even though overall simplicity, especially in classification, the cross-validation results are very good.
 But on the other side, the input images are friendly to work with.
-An undocumented experiment showed a CV-value of about 85\% as best with the old data-set 
+An undocumented experiment showed a CV-value of about 85\% with the old data-set 
 
-The feature elimination shows a shaky behavior,
-with a small modification in the data set,
-a quite different set of features was suggested by backwards-elimination.
+The feature elimination shows a shaky behavior.
+For two the two data sets, that are very much alike,
+two a quite different set of features was suggested by backwards-elimination.
 This might be due to that with the full data-set,
 most of the effort by backwards-elimination was to minimize frequent a, å and ä clashes.
 But with a data-set without such worries, the elimination focused on smaller details.
 Thus eliminating differently for the similar data-sets.
 
+The result of the cross-validation where good, but the wordizing didn't perform as good.
+It's however not reliable to state the condition of the project
+based on one image. It would be interesting to try the wordizer on more examples.
+
+\section{Conclusions}
+The
+
 \section{References}
 \section{Appendix}
+
 
 
 \end{document}
