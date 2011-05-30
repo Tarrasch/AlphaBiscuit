@@ -218,15 +218,40 @@ The CV-value is the ratio of correctly identified biscuits using cross validatio
 
 So the final feature configuration became: Perimetry, Eccentricity and the three versions of momentum.
 That configuration gave us a CV-value of $98.87\%$.
-One missclassificatio can be seen in figure \ref{fig:misclas}.
+One missclassificatio can be seen in figure \ref{fig:misclas},
+an E was misclassified for an K. The K have a distance of $0.331$,
+and the closest correct character have a distance of $1.226$.
+Their exact normalized features can be seen in \ref{tab:misclas},
+their where $15$ candidates between the K and the closest E.
 
 \begin{figure}[]
 \begin{center}
-\includegraphics[width=40mm]{.JPG}
+\includegraphics[width=40mm]{orig.png}
+\includegraphics[width=40mm]{closest.png}
+\includegraphics[width=40mm]{closest_correct.png}
 \end{center}
-\caption{}
+\caption{An example of a misclassifcation. 
+         The left image is the one we tried to classify. 
+         The middle image is the closest neighbour.
+         The right is the closest correct neighbour.}
 \label{fig:misclas}
 \end{figure}
+
+\begin{table}[h!b!p!]
+\caption{Features of three biscuits}
+\begin{center}
+    \begin{tabular}{ | l | c | c | }
+    & Feature           & Left  & Middle & Right \\ \hline
+    & Eccentricity      &  0.55 & -0.01  &  0.56 \\ \hline
+    & Perimetry holes   &  0.87 &  0.91  & -0.24 \\ \hline
+    & Momentum degree 1 & -0.45 & -0.48  & -0.46 \\ \hline
+    & Momentum degree 2 & -0.35 & -0.30  & -0.36 \\ \hline
+    & Momentum degree 3 & -0.32 & -0.23  & -0.34 \\ \hline
+    \end{tabular}
+\end{center}
+\label{tab:misclas}
+\end{table}
+
 
 Running the same procedure on a slightly reduced character-set without å, ä and ö,
 the final feature configuration is Perimetry, Eccentricity, Solidity and momentum with exponent one.
