@@ -1,0 +1,20 @@
+Orig:
+    Eccentricity: 0.5543
+     ANPerimeter: 0.8708
+          ANmom1: -0.4515
+          ANmom2: -0.3478
+          ANmom3: -0.3206
+
+Best Challenger (0.33101) :
+    Eccentricity: -0.0108
+     ANPerimeter: 0.9076
+          ANmom1: -0.4768
+          ANmom2: -0.3082
+          ANmom3: -0.2308
+
+Closest real (1.2263) (17) :
+    Eccentricity: 0.5621
+     ANPerimeter: -0.2363
+          ANmom1: -0.4629
+          ANmom2: -0.3615
+          ANmom3: -0.3359
